@@ -157,7 +157,7 @@
         <h2 class="title is-3">Training Pipeline</h2>
         <div class="content has-text-justified">
           <p>
-            We use a two stage training pipeline. First, we train a teacher policy in simulation through reinforcement learning that acts on a geometric fabric action space to ensure reactivity and safety. Then, we distill this teacher into an RGB-based student in simulation.
+            We use a two stage training pipeline. First, we train a state-based teacher policy in simulation through reinforcement learning that acts on a geometric fabric action space to ensure reactivity and safety. Then, we distill this teacher into an RGB-based student in simulation.
           </p>
         </div>
         <div class="image">
@@ -173,63 +173,45 @@
     </div>
   </section>
 
-<!-- Stereo Encoder Section
+<!-- Stereo Encoder Section -->
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container has-text-centered">
       <h2 class="title is-3">Stereo Encoder</h2>
-      <div class="columns is-centered">
+      <div class="content has-text-justified">
+        <p>
+          Our stereo encoder consists of a ResNet-18 backbone and a stereo attention module. The images are first fed in a Siamese manner through the ResNet-18 backbone with the last two layers removed. The output feature map is reshaped into 128 128-dimensional keys. These are then fed into the stereo attention transformer along with a learnable <span class="mono">[embed]</span> token. The transformer performs cross-attention between the tokens from the left image and right image and the output for the <span class="mono">[embed]</span> token is used as the stereo embedding.
+        </p>
+      </div>
+      <div class="columns is-centered is-gapless">
+        <!-- Left Column -->
         <div class="column is-half">
-          <figure class="image">
-            <img src="static/images/stereo_encoder_fig.png" alt="Stereo Encoder Image 1" style="max-width: 60%; height: auto; display: block; margin: 0 auto;">
-          </figure>
+          <div class="figure-container" style="display: flex; flex-direction: column; align-items: center;">
+            <!-- Image wrapper with fixed height to align centers -->
+            <div class="image-wrapper" style="position: relative; height: 300px; width: 100%;">
+              <img src="static/images/stereo_encoder_fig.png" alt="Stereo Encoder Image 1" 
+                   style="max-width: 70%; height: auto; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            </div>
+            <!-- Caption -->
+            <div class="caption" style="margin-top: 1rem;">Stereo Encoder</div>
+          </div>
         </div>
+        <!-- Right Column -->
         <div class="column is-half">
-          <figure class="image">
-            <img src="static/images/attention_map.png" alt="Stereo Encoder Image 2" style="max-width: 60%; height: auto; display: block; margin: 0 auto;">
-          </figure>
+          <div class="figure-container" style="display: flex; flex-direction: column; align-items: center;">
+            <!-- Image wrapper with fixed height to align centers -->
+            <div class="image-wrapper" style="position: relative; height: 300px; width: 100%;">
+              <img src="static/images/attention_map.png" alt="Attention Map for the Transformer" 
+                   style="max-width: 40%; height: auto; position: absolute; top: 50%; left: 46%; transform: translate(-50%, -50%);">
+            </div>
+            <!-- Caption -->
+            <div class="caption" style="margin-top: 1rem;">Attention Map for the Transformer</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</section> -->
-
-
-  <!-- Video carousel -->
-  <section class="hero is-small">
-    <div class="hero-body">
-      <div class="container">
-        <h2 class="title is-3">Grasping Unseen Objects</h2>
-        <div id="results-carousel" class="carousel results-carousel">
-          <div class="item item-video0">
-            <video poster="" id="video0" autoplay controls muted loop height="100%">
-              <!-- Your video file here -->
-              <source src="static/videos/carousel_0.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="item item-video1">
-            <video poster="" id="video1" autoplay controls muted loop height="100%">
-              <!-- Your video file here -->
-              <source src="static/videos/carousel_2.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="item item-video2">
-            <video poster="" id="video2" autoplay controls muted loop height="100%">
-              <!-- Your video file here -->
-              <source src="static/videos/carousel_1.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="item item-video3">
-            <video poster="" id="video3" autoplay controls muted loop height="100%">
-              <!-- Your video file here -->
-              <source src="static/videos/carousel_3.mp4" type="video/mp4">
-            </video>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End video carousel -->
+</section>
 
   <!-- Simulation Section -->
   <section class="hero is-small">
